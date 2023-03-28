@@ -43,6 +43,9 @@ class hexClass:
         self.word = res
         return res
         
+    def getside(self,side):
+        return self.sides[side]    
+        
     def insertWord(self,word):
         
         order = ["top", "topRight", "bottomRight", "bottom", "bottomLeft", "topLeft"]

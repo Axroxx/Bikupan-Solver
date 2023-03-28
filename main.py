@@ -27,23 +27,21 @@ def main():
     for i in range(1,26):
         hexes.append(hexClass(i," "," "," "," "," "," "))
         
-    #starting hex      
-    hexes[13] = hexClass(14,"R","E","N","E","G","A")
-    hexes[13].complete = True
+    #starting hex  
+    index = 13
+    hexes[index] = hexClass(1,"R","E","N","E","G","A")
+    hexes[index].complete = True
     
     
     hive = hiveClass(hexes)
     
-    
     update()
     
     for hex in hive.all:
-        hex.insertWord("GRANNE")
-        
+        hex.insertWord("BESLAG")
+    
     update()
-    
-    
-    
+   
     
     """for i in range(100):
         for word in words:
@@ -56,12 +54,10 @@ def main():
                     update()
                 """
     
-    try:
-        print(hive)
-    except:
-        pass
+    print(hive)
+    """
+    for hex in hive.all:
+        print(hex)
+    """
     
-    
-    
-        
 main()
