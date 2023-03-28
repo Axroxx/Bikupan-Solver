@@ -5,7 +5,7 @@ words = [
     "ADRESS", "AGATEN", "AGATER", "ALLVAR", "AMATÖR", "AVIGAN", "BESLAG", "GARAGE", "GASRÖR", "GENERA", "GRANNE", "KURERA", "LIVLIG", "NARRAS", "NARRAT", "RASSLA", "RATTAR", "REGENT", "REMMAR", "ROTERA", "SNARAR", "STEGRA", "TORGET", "TOTALA", "TROLLA" 
 ]
 
-#Bokstäver går som klockan
+#Letters go in clock-order
 
 
 def update():
@@ -17,6 +17,10 @@ def update():
         if change:
             permutation += 1
 
+def insert(word):
+    global hive 
+    for hex in hive.all:
+        change = hex.insertWord(word)
 
 
 def main():
@@ -34,16 +38,12 @@ def main():
     
     
     hive = hiveClass(hexes)
+
     
     update()
     
-    for hex in hive.all:
-        hex.insertWord("BESLAG")
-    
-    update()
-   
-    
-    """for i in range(100):
+    """
+    for i in range(100):
         for word in words:
             for hex in hive.all:
                 if not hex.complete:
@@ -52,9 +52,10 @@ def main():
                         words.remove(word)
                         break
                     update()
-                """
+    """
     
     print(hive)
+    
     """
     for hex in hive.all:
         print(hex)

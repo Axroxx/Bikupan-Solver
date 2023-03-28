@@ -16,15 +16,14 @@ class hiveClass:
         return(self.all[i-1])
         
     def updatehexes(self, hex):
-        
-        change = False
-            
-                 
+                         
         #top
         try:
             a = self.all[hex.nb["topLeft"]-1].sides["bottomRight"]
             if hex.sides["top"] != a and a != " " and hex.sides["top"] == " ":
                 hex.sides["top"] = self.all[hex.nb["topLeft"]-1].sides["bottomRight"]
+                
+            
         except:
             pass
         
@@ -60,7 +59,7 @@ class hiveClass:
             e = self.all[hex.nb["topRight"]-1].sides["bottom"]
             if hex.sides["topRight"] != e and e != " " and hex.sides["topRight"] == " ":
                 hex.sides["topRight"] = self.all[hex.nb["topRight"]-1].sides["bottom"]
-            
+
         except:
             pass
         
@@ -98,7 +97,7 @@ class hiveClass:
             i = self.all[hex.nb["right"]-1].sides["bottomLeft"]
             if hex.sides["bottomRight"] != i and i != " " and hex.sides["bottomRight"] == " ":
                 hex.sides["bottomRight"] = self.all[hex.nb["right"]-1].sides["bottomLeft"]
-        
+
         except:
             pass
         
@@ -107,6 +106,7 @@ class hiveClass:
             j = self.all[hex.nb["bottomRight"]-1].sides["top"]
             if hex.sides["bottomRight"] != j and j != " " and hex.sides["bottomRight"] == " ":
                 hex.sides["bottomRight"] = self.all[hex.nb["bottomRight"]-1].sides["top"]
+                
                 
         except:
             pass
@@ -118,6 +118,7 @@ class hiveClass:
             if hex.sides["bottom"] != k and k != " " and hex.sides["bottom"] == " ":
                 hex.sides["bottom"] = self.all[hex.nb["bottomLeft"]-1].sides["topRight"]
                 
+                
         except:
             pass
         
@@ -126,12 +127,11 @@ class hiveClass:
             l = self.all[hex.nb["bottomRight"]-1].sides["topLeft"]
             if hex.sides["bottom"] != l and l != " " and hex.sides["bottom"] == " ":
                 hex.sides["bottom"] = self.all[hex.nb["bottomRight"]-1].sides["topLeft"]
-                
         
         except:
             pass
         
-        return change
+        return 0
             
     """
     def __repr__(self):

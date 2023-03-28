@@ -52,10 +52,10 @@ class hexClass:
         
         revorder = ["topLeft", "bottomLeft", "bottom", "bottomRight", "topRight", "top"]
         
-        
+
         for i in range(6):
             for j in range(6):
-                if word[(0+i)%6] == self.sides[order[(0+j)%6]] and word[(1+i)%6] == self.sides[order[(1+j)%6]] and self.sides[order[(2+j)%6]] == " " and self.sides[order[(3+j)%6]] == " " and self.sides[order[(4+j)%6]] == " " and self.sides[order[(5+j)%6]] == " ":
+                if word[(0+i)%6] == self.sides[order[(0+j)%6]] and word[(1+i)%6] == self.sides[order[(1+j)%6]] and (self.sides[order[(2+j)%6]] == " " or word[(2+i)%6] == self.sides[order[(2+j)%6]]) and (self.sides[order[(3+j)%6]] == " " or word[(3+i)%6] == self.sides[order[(3+j)%6]]) and (self.sides[order[(4+j)%6]] == " " or word[(4+i)%6] == self.sides[order[(4+j)%6]]) and (self.sides[order[(5+j)%6]] == " " or word[(5+i)%6] == self.sides[order[(5+j)%6]]):
                     self.sides[order[(2+j)%6]] = word[(2+i)%6]
                     self.sides[order[(3+j)%6]] = word[(3+i)%6]
                     self.sides[order[(4+j)%6]] = word[(4+i)%6]
@@ -63,10 +63,9 @@ class hexClass:
                     
                     return True
                     
-                
         for i in range(6):
             for j in range(6):
-                if word[(0+i)%6] == self.sides[revorder[(0+j)%6]] and word[(1+i)%6] == self.sides[revorder[(1+j)%6]] and self.sides[revorder[(2+j)%6]] == " " and self.sides[revorder[(3+j)%6]] == " " and self.sides[revorder[(4+j)%6]] == " " and self.sides[revorder[(5+j)%6]] == " ":
+                if word[(0+i)%6] == self.sides[revorder[(0+j)%6]] and word[(1+i)%6] == self.sides[revorder[(1+j)%6]] and (self.sides[revorder[(2+j)%6]] == " " or word[(2+i)%6] == self.sides[revorder[(2+j)%6]]) and (self.sides[revorder[(3+j)%6]] == " " or word[(3+i)%6] == self.sides[revorder[(3+j)%6]]) and (self.sides[revorder[(4+j)%6]] == " " or word[(4+i)%6] == self.sides[revorder[(4+j)%6]]) and (self.sides[revorder[(5+j)%6]] == " " or word[(5+i)%6] == self.sides[revorder[(5+j)%6]]):
                     self.sides[revorder[(2+j)%6]] = word[(2+i)%6]
                     self.sides[revorder[(3+j)%6]] = word[(3+i)%6]
                     self.sides[revorder[(4+j)%6]] = word[(4+i)%6]
