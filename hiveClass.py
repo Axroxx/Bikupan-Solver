@@ -4,6 +4,7 @@ class hiveClass:
     def __init__(self,hexes) -> None:
         
         self.all = hexes
+        self.used = []
         
     def printall(self):
         for i in self.all:
@@ -65,9 +66,10 @@ class hiveClass:
                     s += self.all[i].sides["top"] + "     "
                 else:
                     s += "-     "
+
+            s += "\n"
                 
             
-            s += "\n"
             for i in range(ran,l2[index]):
                 if self.all[i].sides["topLeft"] != " ":
                     s += self.all[i].sides["topLeft"] + "     "
@@ -81,7 +83,7 @@ class hiveClass:
             
             
             # num
-            s += "  "
+            s += "\n   "
             for i in range(4):
                 s += colored(str(n),"red") + "    "
                 if n < 10:
@@ -100,7 +102,7 @@ class hiveClass:
                 s += "-     "
                 
             
-            s += "  "
+            s += "\n   "
             for i in range(ran,l2[index]):
                 if self.all[i].sides["bottom"] != " ":
                     s += self.all[i].sides["bottom"] + "     "

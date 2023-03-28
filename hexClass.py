@@ -4,6 +4,11 @@ class hexClass:
         self.number = int(number)
         self.word = ""
         self.complete = False
+        self.empty = False
+        
+        self.order = ["top", "topRight", "bottomRight", "bottom", "bottomLeft", "topLeft"]
+        
+        self.revorder = ["topLeft", "bottomLeft", "bottom", "bottomRight", "topRight", "top"]
         
         # Sides
         self.sides = {"top":t,"topRight":tr,"bottomRight":br,"bottom":b,"bottomLeft":bl,"topLeft":tl}
@@ -33,7 +38,11 @@ class hexClass:
             if self.number not in (4,11,18):
                 self.nb["bottomRight"] = self.number + 4
                 
-        
+                
+    def isempty(self):
+        if self.sides["top"] == " " and self.sides["topLeft"] == " " and self.sides["topRight"] == " " and self.sides["bottomLeft"] == " " and self.sides["bottomRight"] == " " and self.sides["bottom"] == " ":
+            return True
+    
     def update(self):
         res = ""
         for k,v in self.sides.items():
@@ -41,28 +50,34 @@ class hexClass:
                 res += self.sides[k]
         res = res.strip()
         self.word = res
-        return res
         
     def getside(self,side):
         return self.sides[side]    
         
-    def insertWord(self,word):
+    def insertWord(self,word,num):
+        if num == self.number:
+            return False, 0
         
-        order = ["top", "topRight", "bottomRight", "bottom", "bottomLeft", "topLeft"]
         
-        revorder = ["topLeft", "bottomLeft", "bottom", "bottomRight", "topRight", "top"]
-        
-        ls = [order,revorder]
-                
-        
-        # for loop for checking where to insert word
-        for s in ls:
+        ls = [self.order,self.revorder]
+        for o in ls: 
             for i in range(6):
                 for j in range(6):
-                    if word[(0+i)%6] == self.sides[s[(0+j)%6]] and word[(1+i)%6] == self.sides[s[(1+j)%6]] and (self.sides[s[(2+j)%6]] == " " or word[(2+i)%6] == self.sides[s[(2+j)%6]]) and (self.sides[s[(3+j)%6]] == " " or word[(3+i)%6] == self.sides[s[(3+j)%6]]) and (self.sides[s[(4+j)%6]] == " " or word[(4+i)%6] == self.sides[s[(4+j)%6]]) and (self.sides[s[(5+j)%6]] == " " or word[(5+i)%6] == self.sides[s[(5+j)%6]]):
+                    if word[(0+i)%6] == self.sides[o[(0+j)%6]] and word[(1+i)%6] == self.sides[o[(1+j)%6]] and (self.sides[o[(2+j)%6]] == " " or word[(2+i)%6] == self.sides[o[(2+j)%6]]) and (self.sides[o[(3+j)%6]] == " " or word[(3+i)%6] == self.sides[o[(3+j)%6]]) and (self.sides[o[(4+j)%6]] == " " or word[(4+i)%6] == self.sides[o[(4+j)%6]]) and (self.sides[o[(5+j)%6]] == " " or word[(5+i)%6] == self.sides[o[(5+j)%6]]):
+                        
                         for k in range(2,6):
-                            self.sides[s[(k+j)%6]] = word[(k+j)%6]
-                                  
+                            self.sides[o[(k+j)%6]] = word[(k+i)%6]
+    
+                        self.empty = False
+                        return True, self.number
+
+                    
+        return False, 0
+                    
+
+            
+                
+                
                 
             
     
@@ -72,7 +87,4 @@ class hexClass:
             x = "  "
         return("  "+str(self.sides["top"])+"  \n"+str(self.sides["topLeft"]) + x +str(self.number)+" "+
                str(self.sides["topRight"])+"\n"+str(self.sides["bottomLeft"])+"    "+str(self.sides["bottomRight"])+"\n  "+str(self.sides["bottom"]))
-    
-    
-
     
