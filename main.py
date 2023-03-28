@@ -42,6 +42,15 @@ def main():
     
     update()
     
+    insert("GRANNE")
+    
+    update()
+    
+    
+    print(hive)
+    
+    
+    
     """
     for i in range(100):
         for word in words:
@@ -53,8 +62,6 @@ def main():
                         break
                     update()
     """
-    
-    print(hive)
     
     """
     for hex in hive.all:

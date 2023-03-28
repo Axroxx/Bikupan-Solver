@@ -1,5 +1,5 @@
 from termcolor import colored
-
+  
 class hiveClass:
     def __init__(self,hexes) -> None:
         
@@ -18,128 +18,34 @@ class hiveClass:
     def updatehexes(self, hex):
                          
         #top
-        try:
-            a = self.all[hex.nb["topLeft"]-1].sides["bottomRight"]
-            if hex.sides["top"] != a and a != " " and hex.sides["top"] == " ":
-                hex.sides["top"] = self.all[hex.nb["topLeft"]-1].sides["bottomRight"]
+        
+        ls = [["topLeft","bottomRight","top"],
+        ["topRight","bottomLeft","top"],
+        ["topLeft","bottom","topLeft"],
+        ["left","topRight","topLeft"],
+        ["topRight","bottom","topRight"],
+        ["right","topLeft","topRight"],
+        ["left","bottomRight","bottomLeft"],
+        ["bottomLeft","top","bottomLeft"],
+        ["right","bottomLeft","bottomRight"],
+        ["bottomRight","top","bottomRight"],
+        ["bottomLeft","topRight","bottom"],
+        ["bottomRight","topLeft","bottom"]]
+        
+        
+        for i in ls:
+            try:
+                a = self.all[hex.nb[i[0]]-1].sides[i[1]]
+                if hex.sides[i[2]] != a and a != " " and hex.sides[i[2]] == " ":
+                    hex.sides[i[2]] = self.all[hex.nb[i[0]]-1].sides[i[1]]
+                    
                 
-            
-        except:
-            pass
-        
-        try:
-            b = self.all[hex.nb["topRight"]-1].sides["bottomLeft"]    
-            if hex.sides["top"] != b and b != " " and hex.sides["top"] == " ":    
-                hex.sides["top"] = self.all[hex.nb["topRight"]-1].sides["bottomLeft"]
-                
-        except:
-            pass
-        
-        #topLeft
-        try:
-            c = self.all[hex.nb["topLeft"]-1].sides["bottom"]
-            if hex.sides["topLeft"] != c and c != " " and hex.sides["topLeft"] == " ":
-                hex.sides["topLeft"] = self.all[hex.nb["topLeft"]-1].sides["bottom"]
-                
-        except:
-            pass
-        
-        try:
-            
-            d = self.all[hex.nb["left"]-1].sides["topRight"]
-            if hex.sides["topLeft"] != d and d != " " and hex.sides["topLeft"] == " ":
-                hex.sides["topLeft"] = self.all[hex.nb["left"]-1].sides["topRight"]
-                
-        except:
-            pass
-        
-        
-        #topRight
-        try:
-            e = self.all[hex.nb["topRight"]-1].sides["bottom"]
-            if hex.sides["topRight"] != e and e != " " and hex.sides["topRight"] == " ":
-                hex.sides["topRight"] = self.all[hex.nb["topRight"]-1].sides["bottom"]
-
-        except:
-            pass
-        
-        try:
-        
-            f = self.all[hex.nb["right"]-1].sides["topLeft"]
-            if hex.sides["topRight"] != f and f != " " and hex.sides["topRight"] == " ":
-                hex.sides["topRight"] = self.all[hex.nb["right"]-1].sides["topLeft"]
-                
-        except:
-            pass
-        
-        
-        #bottomLeft
-        try:
-            g = self.all[hex.nb["left"]-1].sides["bottomRight"]
-            if hex.sides["bottomLeft"] != g and g != " " and hex.sides["bottomLeft"] == " ":
-                hex.sides["bottomLeft"] = self.all[hex.nb["left"]-1].sides["bottomRight"]
-                
-        except:
-            pass
-        
-        try:
-            
-            h = self.all[hex.nb["bottomLeft"]-1].sides["top"]
-            if hex.sides["bottomLeft"] != h and h != " " and hex.sides["bottomLeft"] == " ":
-                hex.sides["bottomLeft"] = self.all[hex.nb["bottomLeft"]-1].sides["top"]
-                
-        except:
-            pass
-        
-        
-        #bottomRight
-        try:
-            i = self.all[hex.nb["right"]-1].sides["bottomLeft"]
-            if hex.sides["bottomRight"] != i and i != " " and hex.sides["bottomRight"] == " ":
-                hex.sides["bottomRight"] = self.all[hex.nb["right"]-1].sides["bottomLeft"]
-
-        except:
-            pass
-        
-        try:
-                
-            j = self.all[hex.nb["bottomRight"]-1].sides["top"]
-            if hex.sides["bottomRight"] != j and j != " " and hex.sides["bottomRight"] == " ":
-                hex.sides["bottomRight"] = self.all[hex.nb["bottomRight"]-1].sides["top"]
-                
-                
-        except:
-            pass
-        
-        
-        #bottom
-        try:
-            k = self.all[hex.nb["bottomLeft"]-1].sides["topRight"]
-            if hex.sides["bottom"] != k and k != " " and hex.sides["bottom"] == " ":
-                hex.sides["bottom"] = self.all[hex.nb["bottomLeft"]-1].sides["topRight"]
-                
-                
-        except:
-            pass
-        
-        try:
-                
-            l = self.all[hex.nb["bottomRight"]-1].sides["topLeft"]
-            if hex.sides["bottom"] != l and l != " " and hex.sides["bottom"] == " ":
-                hex.sides["bottom"] = self.all[hex.nb["bottomRight"]-1].sides["topLeft"]
-        
-        except:
-            pass
+            except:
+                pass 
         
         return 0
             
-    """
-    def __repr__(self):
-        str = " "
-        for i in range(4):
-            str += self.all[i].sides["top"] + " "
-        return(str)
-    """
+    
     
     def __repr__(self):
         s = ""
@@ -175,7 +81,7 @@ class hiveClass:
             
             
             # num
-            s += "\n" + "   "
+            s += "  "
             for i in range(4):
                 s += colored(str(n),"red") + "    "
                 if n < 10:
@@ -194,7 +100,7 @@ class hiveClass:
                 s += "-     "
                 
             
-            s += "\n   "
+            s += "  "
             for i in range(ran,l2[index]):
                 if self.all[i].sides["bottom"] != " ":
                     s += self.all[i].sides["bottom"] + "     "
