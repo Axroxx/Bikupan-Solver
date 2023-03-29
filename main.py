@@ -29,7 +29,9 @@ def run():
     
     for hive in permutations:
         inserted = False
-        for word in hive.avalable:
+        for i in range(len(hive.avalable)):
+            word = hive.avalable[hive.lastchecked]
+            hive.check()
             for j in range(1, 26):
                 if not hive[j].empty: # check if location is empty 
                     if not hive[j].complete: # if location is full
@@ -77,8 +79,8 @@ def main():
         hexes.append(hexClass(i," "," "," "," "," "," ",False))
         
     # starting hex  
-    index = 13
-    hexes[index] = hexClass(index+1,"R","E","N","E","G","A",True)
+    index = 14
+    hexes[index-1] = hexClass(index,"R","E","N","E","G","A",True)
     
     
     # importaint
@@ -88,6 +90,7 @@ def main():
     
     while True:
         run()
+        print("---------------------------")
     
     
     

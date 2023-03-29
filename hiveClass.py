@@ -6,10 +6,18 @@ class hiveClass:
         self.all = hexes
         self.used = []
         self.avalable = words
+        self.lastchecked = 0
         
     def printall(self):
         for i in self.all:
             print(i)
+    
+    
+    def check(self):
+        self.lastchecked += 1
+        if self.lastchecked == len(self.avalable):
+            self.lastchecked = 0 
+        
             
     def size(self):
         return len(self.used)
