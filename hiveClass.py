@@ -1,20 +1,31 @@
 from termcolor import colored
   
 class hiveClass:
-    def __init__(self,hexes) -> None:
+    def __init__(self,hexes,words) -> None:
         
         self.all = hexes
         self.used = []
+        self.avalable = words
         
     def printall(self):
         for i in self.all:
             print(i)
+            
+    def size(self):
+        return len(self.used)
+        
             
     def __getitem__(self,i):
         return(self.all[i-1])
             
     def gethex(self,i):
         return(self.all[i-1])
+    
+    def removeword(self,inword):
+        for word in self.avalable:
+            if word == inword:
+                self.avalable.remove(inword)
+                self.used.append(inword)
         
     def updatehexes(self, hex):
                          
@@ -43,6 +54,8 @@ class hiveClass:
                 
             except:
                 pass 
+            
+        hex.iscomplete()
         
         return 0
             

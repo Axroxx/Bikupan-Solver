@@ -3,9 +3,11 @@ from hiveClass import *
 import copy
 
 permutations = []
+totalpermu = 1
 words = [
-    "ADRESS", "AGATEN", "AGATER", "ALLVAR", "AMATÖR", "AVIGAN", "BESLAG", "GARAGE", "GASRÖR", "GENERA", "GRANNE", "KURERA", "LIVLIG", "NARRAS", "NARRAT", "RASSLA", "RATTAR", "REGENT", "REMMAR", "ROTERA", "SNARAR", "STEGRA", "TORGET", "TOTALA", "TROLLA" 
+    "ADRESS", "AGATEN", "AGATER", "ALLVAR", "AMATÖR", "AVIGAN", "BESLAG", "GARAGE", "GASRÖR", "GRANNE", "KURERA", "LIVLIG", "NARRAS", "NARRAT", "RASSLA", "RATTAR", "REGENT", "REMMAR", "ROTERA", "SNARAR", "STEGRA", "TORGET", "TOTALA", "TROLLA" 
 ]
+biggest_hive = 1
 
 #Letters go in clock-order
 
@@ -21,33 +23,47 @@ def update(hive):
         change = hive.updatehexes(hex)
         hex.update()
 
-def insert(word, number, permutations):
+def run():
+    global biggest_hive, permutations, totalpermu
     
     
-    for i in range(len(permutations)):
-        
-        hive = permutations[i]
-        
-        
-        hiveList = []
-        
-        for j in range(1, 26):
-            hive_copy = copy.deepcopy(hive)
-            
-            if not hive_copy[j].empty:
-                ans = hive_copy[j].insertWord(word, number)
-                inserted, number = ans
+    for hive in permutations:
+        inserted = False
+        for word in hive.avalable:
+            for j in range(1, 26):
+                if not hive[j].empty: # check if location is empty 
+                    if not hive[j].complete: # if location is full
+                        hive_copy = copy.deepcopy(hive)
 
-                if inserted:
-                    update(hive_copy)
-                    hiveList.append(hive_copy)
+                        if hive_copy[j].insertWord(word): # if insertion is successfull
+                            update(hive_copy)
+                            hive_copy.removeword(word)
+                            permutations.append(hive_copy)
+                            totalpermu += 1
+                            inserted = True
+                            
+                            
+                            if hive_copy.size() > biggest_hive:
+                                biggest_hive = hive_copy.size()
+                                print(hive_copy)
+                                
+                            if hive_copy.size() == 24:
+                                print(hive_copy)
+                                print(totalpermu)
+                                return 0/0
+                            
+                        
+        if not inserted:
+            permutations.remove(hive)
+            print("removed")
         
-        return hiveList
-                    
-    
-    
-    
-    
+        print(len(permutations))
+            
+            
+            
+            
+            
+   
             
 
 
@@ -58,29 +74,39 @@ def main():
     
     # initializing all hexes
     for i in range(1,26):
-        hexes.append(hexClass(i," "," "," "," "," "," "))
+        hexes.append(hexClass(i," "," "," "," "," "," ",False))
         
     # starting hex  
     index = 13
-    hexes[index] = hexClass(index+1,"R","E","N","E","G","A")
-    hexes[index].complete = True
+    hexes[index] = hexClass(index+1,"R","E","N","E","G","A",True)
     
     
     # importaint
-    hive = hiveClass(hexes)
+    hive = hiveClass(hexes,words)
     boot(hive)
-    
-    
     permutations.append(hive)
     
+    while True:
+        run()
     
-    new = insert("GRANNE", 0, permutations)
+    
+    
+    """
+    new = insert("GRANNE")
     for i in new:
         permutations.append(i)
+    """
+    """
+    while True:
+        for word in words:
+            new = insert(word)
+            permutations.append(new)
+        print(len(permutations))
+            """
     
     
-    for per in permutations:
-        print(per)
+    """for per in permutations:
+        print(per)"""
     
     
     

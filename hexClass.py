@@ -1,9 +1,9 @@
 class hexClass:
-    def __init__(self,number,t,tr,br,b,bl,tl):
+    def __init__(self,number,t,tr,br,b,bl,tl,complete):
         
         self.number = int(number)
         self.word = ""
-        self.complete = False
+        self.complete = complete
         self.empty = False
         
         self.order = ["top", "topRight", "bottomRight", "bottom", "bottomLeft", "topLeft"]
@@ -40,8 +40,16 @@ class hexClass:
                 
                 
     def isempty(self):
-        if self.sides["top"] == " " and self.sides["topLeft"] == " " and self.sides["topRight"] == " " and self.sides["bottomLeft"] == " " and self.sides["bottomRight"] == " " and self.sides["bottom"] == " ":
+        if all(value == " " for k, value in self.sides.items()):
             return True
+        
+    def iscomplete(self):
+        
+        
+        
+        if all(value != " " for k, value in self.sides.items()):
+            self.complete = True
+
     
     def update(self):
         res = ""
@@ -54,9 +62,7 @@ class hexClass:
     def getside(self,side):
         return self.sides[side]    
         
-    def insertWord(self,word,num):
-        if num == self.number:
-            return False, 0
+    def insertWord(self,word):
         
         
         ls = [self.order,self.revorder]
@@ -69,10 +75,10 @@ class hexClass:
                             self.sides[o[(k+j)%6]] = word[(k+i)%6]
     
                         self.empty = False
-                        return True, self.number
+                        return True
 
                     
-        return False, 0
+        return False
                     
 
             
