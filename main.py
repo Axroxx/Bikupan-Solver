@@ -29,33 +29,38 @@ def run():
     
     for hive in permutations:
         inserted = False
-        for i in range(len(hive.avalable)):
-            word = hive.avalable[hive.lastchecked]
-            hive.check()
-            for j in range(1, 26):
-                if not hive[j].empty: # check if location is empty 
-                    if not hive[j].complete: # if location is full
-                        hive_copy = copy.deepcopy(hive)
+        for word in hive.avalable:
+            if word not in hive.dontcheck:
+                inserted = False
+                for j in range(1, 26):
+                    
+                    if not hive[j].empty: # check if location is empty 
+                        if not hive[j].complete: # if location is full
+                            hive_copy = copy.deepcopy(hive)
 
-                        if hive_copy[j].insertWord(word): # if insertion is successfull
-                            update(hive_copy)
-                            hive_copy.removeword(word)
-                            permutations.append(hive_copy)
-                            totalpermu += 1
-                            inserted = True
-                            
-                            
-                            if hive_copy.size() > biggest_hive:
-                                biggest_hive = hive_copy.size()
-                                print(hive_copy)
+                            if hive_copy[j].insertWord(word): # if insertion is successfull
+                                update(hive_copy)
+                                hive_copy.removeword(word)
+                                
+                                permutations.append(hive_copy)
+                                totalpermu += 1
+                                inserted = True
+                                
+                                
+                                if hive_copy.size() > biggest_hive:
+                                    biggest_hive = hive_copy.size()
+                                    print(hive_copy)
                                 
                             if hive_copy.size() == 24:
                                 print(hive_copy)
-                                print(totalpermu)
+                                print(totalpermu, "       ", biggest_hive)
                                 return 0/0
                             
-                        
-        if not inserted:
+                if not inserted:
+                    hive.dontcheck.append(word)
+                    hive.avalable.remove(word)
+                            
+        if hive.avalable == []:
             permutations.remove(hive)
             print("removed")
         

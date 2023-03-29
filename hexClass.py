@@ -43,10 +43,7 @@ class hexClass:
         if all(value == " " for k, value in self.sides.items()):
             return True
         
-    def iscomplete(self):
-        
-        
-        
+    def iscomplete(self):      
         if all(value != " " for k, value in self.sides.items()):
             self.complete = True
 
@@ -63,7 +60,6 @@ class hexClass:
         return self.sides[side]    
         
     def insertWord(self,word):
-        
         
         ls = [self.order,self.revorder]
         for o in ls: 

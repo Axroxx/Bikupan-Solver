@@ -6,7 +6,7 @@ class hiveClass:
         self.all = hexes
         self.used = []
         self.avalable = words
-        self.lastchecked = 0
+        self.dontcheck = []
         
     def printall(self):
         for i in self.all:
