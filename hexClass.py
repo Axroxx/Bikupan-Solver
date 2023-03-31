@@ -45,7 +45,7 @@ class hexClass:
         
     def iscomplete(self):      
         if all(value != " " for k, value in self.sides.items()):
-            self.complete = True
+            return True
 
     
     def update(self):
@@ -56,27 +56,68 @@ class hexClass:
         res = res.strip()
         self.word = res
         
+        if self.isempty():
+            self.empty = True
+            
+        if self.iscomplete():
+            self.complete = True
+        
     def getside(self,side):
         return self.sides[side]    
+    
+       
+    
+    
+    def insertWord(self, word):
+        ls = [self.order, self.revorder]
         
+        for o in ls:
+            for i in range(6):
+                for j in range(6):
+                    # Find the number of matching consecutive letters
+                    matching_count = 0
+                    for k in range(6):
+                        if word[(k+i)%6] == self.sides[o[(k+j)%6]]:
+                            matching_count += 1
+                        else:
+                            break
+                    
+                    # If 2 or more consecutive letters match, insert the word
+                    if matching_count >= 2:
+                        if all(self.sides[o[(l+j)%6]] in (word[(l+i)%6], " ") for l in range(6)):
+                            for k in range(6):
+                                self.sides[o[(k+j)%6]] = word[(k+i)%6]
+                                
+                                
+                        self.complete = True
+                        self.empty = False
+                        return True
+
+        return False
+
+    
+    """
     def insertWord(self,word):
         
         ls = [self.order,self.revorder]
         for o in ls: 
             for i in range(6):
                 for j in range(6):
-                    if word[(0+i)%6] == self.sides[o[(0+j)%6]] and word[(1+i)%6] == self.sides[o[(1+j)%6]] and (self.sides[o[(2+j)%6]] == " " or word[(2+i)%6] == self.sides[o[(2+j)%6]]) and (self.sides[o[(3+j)%6]] == " " or word[(3+i)%6] == self.sides[o[(3+j)%6]]) and (self.sides[o[(4+j)%6]] == " " or word[(4+i)%6] == self.sides[o[(4+j)%6]]) and (self.sides[o[(5+j)%6]] == " " or word[(5+i)%6] == self.sides[o[(5+j)%6]]):
+                    if word[(i)%6] == self.sides[o[(j)%6]] and word[(1+i)%6] == self.sides[o[(1+j)%6]]:
+                        if all((self.sides[o[(s+j)%6]] in (" ", word[(s+i)%6])) for s in range(2,6)):
                         
-                        for k in range(2,6):
-                            self.sides[o[(k+j)%6]] = word[(k+i)%6]
-    
-                        self.empty = False
-                        return True
-
+                            for k in range(6):
+                                self.sides[o[(k+j)%6]] = word[(k+i)%6]
+        
+                            self.empty = False
+                            self.complete = True
+                            return True
+                    
+                    
                     
         return False
-                    
-
+    """
+    
             
                 
                 

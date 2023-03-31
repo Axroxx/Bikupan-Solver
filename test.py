@@ -1,7 +1,7 @@
-def func():
-    i = 1
-    j = 2
-    return i,j
 
-k,l = func()
-print(k,l)
+
+x = 4
+y = 4
+z = 2
+
+print((2*x)/(x**2 + y**2 + z**2) + z, (2*y)/(x**2 + y**2 + z**2), (2*z)/(x**2 + y**2 + z**2) + x)

@@ -1,12 +1,12 @@
 from termcolor import colored
   
 class hiveClass:
-    def __init__(self,hexes,words) -> None:
+    def __init__(self,hexes) -> None:
         
         self.all = hexes
         self.used = []
-        self.avalable = words
-        self.dontcheck = []
+        self.badlist = []
+        self.complete_amt = -1
         
     def printall(self):
         for i in self.all:
@@ -20,24 +20,20 @@ class hiveClass:
         
             
     def size(self):
-        return len(self.used)
+        return len(self.used)+1
         
             
-    def __getitem__(self,i):
-        return(self.all[i-1])
+    #def __getitem__(self,i):
+    #    return(self.all[i-1])
             
     def gethex(self,i):
         return(self.all[i-1])
     
-    def removeword(self,inword):
-        for word in self.avalable:
-            if word == inword:
-                self.avalable.remove(inword)
-                self.used.append(inword)
         
-    def updatehexes(self, hex):
+    def updatehexes(self):
                          
         #top
+        
         
         ls = [["topLeft","bottomRight","top"],
         ["topRight","bottomLeft","top"],
@@ -52,18 +48,21 @@ class hiveClass:
         ["bottomLeft","topRight","bottom"],
         ["bottomRight","topLeft","bottom"]]
         
-        
-        for i in ls:
-            try:
-                a = self.all[hex.nb[i[0]]-1].sides[i[1]]
-                if hex.sides[i[2]] != a and a != " " and hex.sides[i[2]] == " ":
-                    hex.sides[i[2]] = self.all[hex.nb[i[0]]-1].sides[i[1]]
+        for hex in self.all:
+            for i in ls:
+                try:
+                    a = self.all[hex.nb[i[0]]-1].sides[i[1]]
+                    if hex.sides[i[2]] != a and a != " " and hex.sides[i[2]] == " ":
+                        hex.sides[i[2]] = self.all[hex.nb[i[0]]-1].sides[i[1]]
+                        
+                        
                     
-                
-            except:
-                pass 
+                except:
+                    pass
             
-        hex.iscomplete()
+            hex.iscomplete()
+            if hex.complete:
+                self.complete_amt += 1
         
         return 0
             
