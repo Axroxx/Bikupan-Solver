@@ -51,19 +51,19 @@ class hexClass:
 
     
     def update(self):
-        res = ""
+        """res = ""
         for k,v in self.sides.items():
             if v is not None:
                 res += self.sides[k]
         res = res.strip()
-        self.word = res
+        self.word = res"""
         
         if all(value == " " for k, value in self.sides.items()):
             self.empty = True
         else:
             self.empty = False
             
-        if len(self.word) == 6:
+        if all(value != " " for k, value in self.sides.items()):
             self.complete = True
         else:
             self.complete = False
@@ -71,10 +71,25 @@ class hexClass:
     def getside(self,side):
         return self.sides[side]    
     
-       
-    
-    
+    def impossible(self,avalable):
+        
+        ls = [self.order, self.revorder]
+        notimpossible = True
+        for word in avalable:
+            for o in ls:
+                for i in range(6):
+                    for j in range(6):
+                        if word[(0+i)%6] == self.sides[o[(0+j)%6]] and word[(1+i)%6] == self.sides[o[(1+j)%6]]:
+                            notimpossible = False
+                        if not notimpossible:
+                            return notimpossible
+        return notimpossible
+                            
+         
+        
     def insertWord(self, word):
+        
+
         ls = [self.order, self.revorder]
         
         for o in ls:
@@ -100,29 +115,7 @@ class hexClass:
         return False
 
     
-    """
-    def insertWord(self,word):
-        
-        ls = [self.order,self.revorder]
-        for o in ls: 
-            for i in range(6):
-                for j in range(6):
-                    if word[(i)%6] == self.sides[o[(j)%6]] and word[(1+i)%6] == self.sides[o[(1+j)%6]]:
-                        if all((self.sides[o[(s+j)%6]] in (" ", word[(s+i)%6])) for s in range(2,6)):
-                        
-                            for k in range(6):
-                                self.sides[o[(k+j)%6]] = word[(k+i)%6]
-        
-                            self.empty = False
-                            self.complete = True
-                            return True
-                    
-                    
-                    
-        return False
-    """
     
-            
                 
                 
                 
