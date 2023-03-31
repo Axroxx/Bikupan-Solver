@@ -4,7 +4,7 @@ class hexClass:
         self.number = int(number)
         self.word = ""
         self.complete = complete
-        self.empty = False
+        self.empty = True
         
         self.order = ["top", "topRight", "bottomRight", "bottom", "bottomLeft", "topLeft"]
         
@@ -42,10 +42,12 @@ class hexClass:
     def isempty(self):
         if all(value == " " for k, value in self.sides.items()):
             return True
+        return False
         
     def iscomplete(self):      
         if all(value != " " for k, value in self.sides.items()):
             return True
+        return False
 
     
     def update(self):
@@ -56,11 +58,15 @@ class hexClass:
         res = res.strip()
         self.word = res
         
-        if self.isempty():
+        if all(value == " " for k, value in self.sides.items()):
             self.empty = True
+        else:
+            self.empty = False
             
-        if self.iscomplete():
+        if len(self.word) == 6:
             self.complete = True
+        else:
+            self.complete = False
         
     def getside(self,side):
         return self.sides[side]    
@@ -89,8 +95,6 @@ class hexClass:
                                 self.sides[o[(k+j)%6]] = word[(k+i)%6]
                                 
                                 
-                        self.complete = True
-                        self.empty = False
                         return True
 
         return False

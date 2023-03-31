@@ -1,11 +1,12 @@
 from termcolor import colored
   
 class hiveClass:
-    def __init__(self,hexes) -> None:
+    def __init__(self,hexes,words) -> None:
         
         self.all = hexes
         self.used = []
         self.badlist = []
+        self.avalable = words
         self.complete_amt = -1
         
     def printall(self):
@@ -55,14 +56,16 @@ class hiveClass:
                     if hex.sides[i[2]] != a and a != " " and hex.sides[i[2]] == " ":
                         hex.sides[i[2]] = self.all[hex.nb[i[0]]-1].sides[i[1]]
                         
-                        
-                    
                 except:
                     pass
+        
+        self.complete_amt = -1
+        for hex in self.all:
+            hex.update() 
             
-            hex.iscomplete()
             if hex.complete:
                 self.complete_amt += 1
+                
         
         return 0
             

@@ -20,51 +20,46 @@ words = [
 #Letters go in clock-order
 
 
-def update(hive):
-    hive.updatehexes()
 
-
-def insert(hive,word):
-    
+def insert(hive):
     permutations = []
+    size = hive.complete_amt
+    uncompleted = True
     for i in range(25):
-        if not word in hive.badlist and not word in hive.used:
-            if not hive.all[i].complete: 
-                if not hive.all[i].empty:
+        if not hive.all[i].complete: 
+            if not hive.all[i].empty:
+                for word in hive.avalable:
                     hive_copy = copy.deepcopy(hive)
-                    
-                            
                     if hive_copy.all[i].insertWord(word):
-                        update(hive_copy)
-                        
-
+                        uncompleted = False
+                        hive_copy.updatehexes()
                         hive_copy.used.append(word)
-                        hive_copy.badList = []
+                        hive_copy.avalable.remove(word)
+                        for w in hive_copy.badlist:
+                            hive_copy.avalable.append(w)
+                        hive_copy.badlist = []
                         permutations.append(hive_copy)
-                        
                     else:
-                        hive_copy.badlist.append(word)
+                        hive.avalable.remove(word)
+                        hive.badlist.append(word)
+            
+    nl = []
     
-                  
-                
-    return permutations
+    
+    for perm in permutations:
+        if perm.complete_amt > size:
+            nl.append(perm)
+    
+    return nl
             
             
-def run(hives,word):
+def run(hives):
     
     permutations = []
     
-    
-    try:
-        permutations = insert(hives,word)
-    except:
-        pass
-    
-    try:
-        for hive in hives:
-            permutations.append(insert(hive,word))
-    except:
-        pass
+
+    for hive in hives:
+        permutations.append(insert(hive))
     
         
     
@@ -104,9 +99,9 @@ def main():
     
     
     # importaint
-    hive = hiveClass(hexes)
-    update(hive)
-       
+    hive = hiveClass(hexes,words)
+    
+    hive.updatehexes()
     
     
     
@@ -115,19 +110,21 @@ def main():
     
     tree = {0:[hive]}
     
+    
+    
     for i in range(0,5):  
         permutations = []       
         
-        for word in words:
-            for hive in tree[i]:
-                ret = run(hive,word)
-                if ret != []:
-                    permutations.append(ret)
-                
-            
-            tree[i+1] = flatten(permutations)
-        print(len(tree[i]))
-    
+        ret = run(tree[i])
+        if ret != []:
+            permutations.append(ret)
+        
+        
+        tree[i+1] = flatten(permutations)
+        
+        print(tree[i+1][0])
+        print(len(tree[i+1]))
+        
     
     
         
