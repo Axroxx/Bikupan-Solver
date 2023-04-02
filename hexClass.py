@@ -1,8 +1,8 @@
 class hexClass:
-    def __init__(self,number,t,tr,br,b,bl,tl,complete):
+    def __init__(self,number,t,tr,br,b,bl,tl,word,complete):
         
         self.number = int(number)
-        self.word = ""
+        self.word = word
         self.complete = complete
         self.empty = True
         
@@ -51,12 +51,12 @@ class hexClass:
 
     
     def update(self):
-        """res = ""
+        res = ""
         for k,v in self.sides.items():
             if v is not None:
                 res += self.sides[k]
         res = res.strip()
-        self.word = res"""
+        self.word = res
         
         if all(value == " " for k, value in self.sides.items()):
             self.empty = True
@@ -71,54 +71,34 @@ class hexClass:
     def getside(self,side):
         return self.sides[side]    
     
-    def impossible(self,avalable):
-        
-        ls = [self.order, self.revorder]
-        notimpossible = True
-        for word in avalable:
-            for o in ls:
-                for i in range(6):
-                    for j in range(6):
-                        if word[(0+i)%6] == self.sides[o[(0+j)%6]] and word[(1+i)%6] == self.sides[o[(1+j)%6]]:
-                            notimpossible = False
-                        if not notimpossible:
-                            return notimpossible
-        return notimpossible
-                            
-         
-        
     def insertWord(self, word):
-        
-
         ls = [self.order, self.revorder]
-        
+        possible_outcomes = []
+        # currently returns several copies
         for o in ls:
             for i in range(6):
                 for j in range(6):
                     # Find the number of matching consecutive letters
                     matching_count = 0
                     for k in range(6):
-                        if word[(k+i)%6] == self.sides[o[(k+j)%6]]:
+                        if word[(k+i)%6] == self.sides[o[(k+j)%6]]: # just nu så sätter den in orden på samma håll två gånger för att sides ser bara i vilken ordning orden är. man måste typ specificera var ordet ska sitta exakt
                             matching_count += 1
                         else:
                             break
-                    
+
                     # If 2 or more consecutive letters match, insert the word
-                    if matching_count >= 2:
+                    if matching_count > 1:
                         if all(self.sides[o[(l+j)%6]] in (word[(l+i)%6], " ") for l in range(6)):
+                            new_outcome = self.sides.copy()
                             for k in range(6):
-                                self.sides[o[(k+j)%6]] = word[(k+i)%6]
                                 
-                                
-                        return True
+                                new_outcome[o[(k+j)%6]] = word[(k+i)%6]
+                            possible_outcomes.append(new_outcome)
 
-        return False
-
+        return possible_outcomes
     
     
-                
-                
-                
+            
             
     
     def __repr__(self):

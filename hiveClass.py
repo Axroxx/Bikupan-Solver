@@ -8,6 +8,7 @@ class hiveClass:
         self.badlist = []
         self.avalable = words
         self.complete_amt = -1
+        self.oversight = 0
         
     def printall(self):
         for i in self.all:
@@ -58,16 +59,14 @@ class hiveClass:
                         
                 except:
                     pass
-        
+      
         self.complete_amt = -1
         for hex in self.all:
             hex.update() 
             
             if hex.complete:
                 self.complete_amt += 1
-                
-        
-        return 0
+              
             
     
     
