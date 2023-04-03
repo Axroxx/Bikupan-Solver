@@ -15,7 +15,7 @@ class hexClass:
 
         self.nb = {}
         
-        
+        # this gives each hex their neighbours
         if self.number not in (1,5,8,12,15,19,22):
             self.nb["left"] = self.number - 1
         
@@ -39,16 +39,6 @@ class hexClass:
                 self.nb["bottomRight"] = self.number + 4
                 
                 
-    def isempty(self):
-        if all(value == " " for k, value in self.sides.items()):
-            return True
-        return False
-        
-    def iscomplete(self):      
-        if all(value != " " for k, value in self.sides.items()):
-            return True
-        return False
-
     
     def update(self):
         res = ""
@@ -81,14 +71,14 @@ class hexClass:
                     # Find the number of matching consecutive letters
                     matching_count = 0
                     for k in range(6):
-                        if word[(k+i)%6] == self.sides[o[(k+j)%6]]: # just nu så sätter den in orden på samma håll två gånger för att sides ser bara i vilken ordning orden är. man måste typ specificera var ordet ska sitta exakt
+                        if word[(k+i)%6] == self.sides[o[(k+j)%6]]: # magic
                             matching_count += 1
                         else:
                             break
 
                     # If 2 or more consecutive letters match, insert the word
                     if matching_count > 1:
-                        if all(self.sides[o[(l+j)%6]] in (word[(l+i)%6], " ") for l in range(6)):
+                        if all(self.sides[o[(l+j)%6]] in (word[(l+i)%6], " ") for l in range(6)): # more magic, but i'm proud
                             new_outcome = self.sides.copy()
                             for k in range(6):
                                 
@@ -101,7 +91,7 @@ class hexClass:
             
             
     
-    def __repr__(self):
+    def __repr__(self): # prints a small hex of itself.
         x = " "
         if self.number < 10:
             x = "  "

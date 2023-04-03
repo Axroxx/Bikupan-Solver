@@ -4,29 +4,15 @@ class hiveClass:
     def __init__(self,hexes,words) -> None:
         
         self.all = hexes
-        self.used = []
         self.badlist = []
         self.avalable = words
         self.complete_amt = -1
-        self.oversight = 0
         
-    def printall(self):
-        for i in self.all:
-            print(i)
     
-    
-    def check(self):
-        self.lastchecked += 1
-        if self.lastchecked == len(self.avalable):
-            self.lastchecked = 0 
-        
             
     def size(self):
         return len(self.used)+1
         
-            
-    #def __getitem__(self,i):
-    #    return(self.all[i-1])
             
     def gethex(self,i):
         return(self.all[i-1])
@@ -50,7 +36,10 @@ class hiveClass:
         ["bottomLeft","topRight","bottom"],
         ["bottomRight","topLeft","bottom"]]
         
-        for hex in self.all:
+        # some wierd pattern appeared when writing all these by hand, so the list above fixed
+        # code length
+        
+        for hex in self.all: # this makes sure all hexes gets their neighbours values
             for i in ls:
                 try:
                     a = self.all[hex.nb[i[0]]-1].sides[i[1]]
@@ -70,7 +59,7 @@ class hiveClass:
             
     
     
-    def __repr__(self):
+    def __repr__(self): # function for printing the hive neatly. can probably be shortened
         s = ""
         n = 1
         
