@@ -1,0 +1,367 @@
+##
+
+words = [
+    "ADRESS", "AGATEN", "AGATER", 
+    "ALLVAR", "AMATÖR", "AVIGAN", 
+    "BESLAG", "GARAGE", "GASRÖR", 
+    "GRANNE", "KURERA", "LIVLIG", 
+    "NARRAS", "NARRAT", "RASSLA", 
+    "RATTAR", "REGENT", "REMMAR", 
+    "ROTERA", "SNARAR", "STEGRA", 
+    "TORGET", "TOTALA", "TROLLA"
+]
+
+
+x = 14
+
+start = hexClass(x,"R","E","N","E","G","A","GENERA",True)
+
+   U     A     B     R
+K     R     G     E     D
+   1     2     3     4
+A     E     A     S     A
+   R     T     L     S
+      5     6     7
+   A     O     A     A
+S     R     T     R     M
+   8     9     10    11
+T     G     T     R     M
+   E     E     A     E
+      12    13    14
+   R     N     G     N
+O     T     A     E     N
+   15    16    17    18
+L     A     R     G     A
+   L     R     A     R
+      19    20    21
+   L     A     S     Ö
+I     V     N     R     T
+   22    23    24    25
+G     I     A     A     A
+   L     G     R     M
+
+
+   A     A     B     R
+K     R     G     E     D
+   1     2     3     4
+U     E     A     S     A
+   R     T     L     S
+      5     6     7
+   A     O     A     A
+S     R     T     R     M
+   8     9     10    11
+T     G     T     R     M
+   E     E     A     E
+      12    13    14
+   R     N     G     N
+O     T     A     E     N
+   15    16    17    18
+L     A     R     G     A
+   L     R     A     R
+      19    20    21
+   L     A     S     Ö
+I     V     N     R     T
+   22    23    24    25
+G     I     A     A     A
+   L     G     R     M
+
+##
+
+
+words = [
+    "ANARKI", "ANKRAD", "ANORAK", 
+    "ASTRAR", "ATTEST", "DONERA", 
+    "GALLRA", "GAPIGA", "KATTOR", 
+    "KNASIG", "KORADE", "KRONAN", 
+    "LAGADE", "LEKSAK", "ORERAR", 
+    "PANERA", "ROTERA", "RUTIGA", 
+    "SKONAT", "SKRATT", "SÖTSAK", 
+    "TIPPAR", "UTRESA", "VANART"
+]
+
+x = 13
+
+start = hexClass(x,"P","P","A","L","K","A","KLAPPA",True)
+
+   S     A     A     Ö
+T     K     T     T     S
+   1     2     3     4
+T     R     T     S     K
+   A     O     E     A
+      5     6     7
+   R     R     R     U
+A     E     A     T     R
+   8     9     10    11
+D     N     P     I     A
+   O     A     P     G
+      12    13    14
+   R     K     A     A
+A     A     L     G     L
+   15    16    17    18
+R     S     E     A     L
+   T     K     D     R
+      19    20    21
+   A     O     A     K
+V     N     R     N     G
+   22    23    24    25
+T     A     K     A     I
+   R     N     I     S
+
+##    
+    
+
+
+words = [
+    "ANANAS", "ANSVAR", "AVSKUM", 
+    "BLÅVAL", "EMEDAN", "LEENDE", 
+    "LINDRA", "NARADE", "NASARE", 
+    "RANDAS", "ROTERA", "SANERA", 
+    "SARONG", "SATSER", "SEEDAD", 
+    "SKURAR", "SLARVA", "SMALNA", 
+    "SONETT", "SOVRUM", "TANDAT", 
+    "TESORT", "TONART", "TRASOR"
+]
+    
+x = 17
+
+start = hexClass(x,"O","N","A","V","O","R","OVANOR",True)
+
+   S     L     M     R        
+D     E     E     E     A     
+   1     2     3     4        
+A     E     D     N     S     
+   D     N     A     A        
+      5     6     7
+   A     A     S     N        
+S     R     R     A     D     
+   8     9     10    11       
+G     O     E     T     A     
+   N     T     S     T        
+      12    13    14
+   A     T     O     E        
+V     R     R     N     R     
+   15    16    17    18       
+S     A     O     A     A     
+   N     S     V     S        
+      19    20    21
+   L     M     R     L        
+B     A     U     A     I     
+   22    23    24    25       
+L     V     K     R     N     
+   Å     S     S     D        
+
+
+
+##
+
+words = [
+    "ASBEST", "CERISE", "EDERAR", 
+    "GASTAR", "HERRAR", "ISADES", 
+    "ISARNA", "ISBERG", "KASERN", 
+    "KOLERA", "KRASSE", "NARRAS", 
+    "OMKULL", "OSÖTAD", "RADERA", 
+    "REBELL", "RIKENA", "ROSIGA", 
+    "SITSEN", "SOTARE", "STRUTS", 
+    "TIAROR", "TRADIG", "TUNIKA"
+    ]
+
+
+x = 12
+
+start = hexClass(x,"I","K","R","O","T","S","KISTOR",True)
+
+
+   T     H     D     S
+G     R     E     E     A
+   1     2     3     4
+I     A     R     R     K
+   D     R     A     N
+      5     6     7
+   E     A     S     A
+C     R     N     I     R
+   8     9     10    11
+E     I     E     T     O
+   S     K     S     R
+      12    13    14
+   T     R     S     U
+A     O     A     T     N
+   15    16    17    18
+R     S     G     A     I
+   E     I     R     K
+      19    20    21
+   D     S     E     O
+O     A     B     L     M
+   22    23    24    25
+S     T     E     L     K
+   Ö     S     R     U
+    
+##    
+    
+    
+words = [
+    "AGERAR", "ARABER", "ARGAST", 
+    "ARTRIK", "BARRAR", "DALLER", 
+    "DATERA", "DÄVERT", "EDERAR", 
+    "FEBRIL", "GALLER", "GREVAR", 
+    "ILLRAR", "KAPELL", "NASALA", 
+    "NASARE", "RASSEL", "REDARE", 
+    "RISTAR", "SILKIG", "TEDAGS", 
+    "UTKAST", "VARADE", "VARIGA"
+]
+
+
+x = 21
+
+start = hexClass(x,"R","E","V","E","L","E","ELEVER",True)
+
+
+   A     S     P     R        
+N     S     E     A     T     
+   1     2     3     4        
+E     A     L     K     R     
+   R     R     L     I        
+      5     6     7
+   E     A     I     G        
+F     B     R     S     A     
+   8     9     10    11       
+L     R     R     T     D     
+   I     A     A     E        
+      12    13    14
+   G     V     D     R        
+E     A     E     A     E     
+   15    16    17    18       
+R     R     R     R     D     
+   A     G     E     E        
+      19    20    21
+   T     A     L     V        
+U     S     L     E     Ä     
+   22    23    24    25       
+T     A     A     R     D     
+   K     N     D     T    
+
+##
+
+
+
+
+
+words = [
+    "ANSATS", "APOTEK", "ARENAN", 
+    "ARREST", "CERISE", "EDERAR", 
+    "ELITEN", "EMEDAN", "EMIRAT", 
+    "FRASER", "GALOPP", "HIMMEL", 
+    "ISDANS", "KALORI", "KIKARE", 
+    "LEDSEN", "LOTSEN", "MEDLEM", 
+    "RASTER", "RIKTIG", "SÅLDES", 
+    "STRASS", "TAKTER", "TYDLIG"
+]
+
+x = 22
+
+start = hexClass(x,"E","R","F","A","R","A","ERFARA",True)
+    
+
+
+   C     N     H     R        
+E     E     L     I     A     
+   1     2     3     4        
+R     S     E     M     T     
+   I     D     M     E        
+      5     6     7
+   S     A     E     D        
+A     N     N     L     Y     
+   8     9     10    11       
+T     A     E     I     T     
+   S     R     T     G        
+      12    13    14
+   S     T     K     R        
+Å     S     A     I     O     
+   15    16    17    18       
+L     E     R     K     L     
+   D     R     E     A        
+      19    20    21
+   E     A     T     P        
+A     R     S     O     P     
+   22    23    24    25       
+R     F     E     L     G     
+   A     R     N     A   
+
+
+
+##
+
+
+
+words = [
+    "AGERAR", "ANSTÖT", "APOTEK", 
+    "ARREST", "ASSIST", "ESSENS", 
+    "ETIKEN", "KANSLI", "NASARE", 
+    "PONERA", "RASERA", "RASERI", 
+    "REDARE", "RESLIG", "RINGAR", 
+    "RITATS", "SIAMES", "SNARAR", 
+    "STÖTEN", "STRASS", "TARMAR", 
+    "TASSAR", "TERMOS", "TROLÖS"
+]
+    
+    
+    
+x = 6
+
+start = hexClass(x,"P","A","R","E","N","A","PANERA",True)
+    
+
+
+   N     T     N     D        
+E     E     O     E     A     
+   1     2     3     4        
+T     K     P     R     R     
+   I     A     A     E        
+      5     6     7
+   L     N     R     G        
+I     S     E     A     N     
+   8     9     10    11       
+G     E     S     R     I     
+   R     S     A     R        
+      12    13    14
+   I     A     T     E        
+T     R     R     S     M     
+   15    16    17    18       
+A     S     A     S     A     
+   T     N     S     I        
+      19    20    21
+   Ö     E     A     S        
+T     T     R     T     Ö     
+   22    23    24    25       
+A     S     M     R     L     
+   N     O     A     O        
+
+
+   N     T     N     R        
+E     E     O     E     A     
+   1     2     3     4        
+T     K     P     R     D     
+   I     A     A     E        
+      5     6     7
+   L     N     R     G        
+I     S     E     A     N     
+   8     9     10    11       
+G     E     S     R     I     
+   R     S     A     R        
+      12    13    14
+   I     A     T     E        
+T     R     R     S     M     
+   15    16    17    18       
+A     S     A     S     A     
+   T     N     S     I        
+      19    20    21
+   Ö     E     A     S        
+T     T     R     T     Ö     
+   22    23    24    25       
+A     S     M     R     L     
+   N     O     A     O     
+
+
+
+
+
+
