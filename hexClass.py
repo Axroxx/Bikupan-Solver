@@ -65,7 +65,7 @@ class hexClass:
         ls = [self.order, self.revorder]
         possible_outcomes = []
         # currently returns several copies
-        for o in ls:
+        for o in ls: 
             for i in range(6):
                 for j in range(6):
                     # Find the number of matching consecutive letters
@@ -84,8 +84,16 @@ class hexClass:
                                 
                                 new_outcome[o[(k+j)%6]] = word[(k+i)%6]
                             possible_outcomes.append(new_outcome)
-
-        return possible_outcomes
+                            
+        returnal = []
+        for item in possible_outcomes:
+            if item not in returnal:
+                returnal.append(item)
+        
+            
+        return returnal
+    
+    
     
     
             

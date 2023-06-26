@@ -7,16 +7,9 @@ totalpermu = 1
 #Letters go in clock-order
 order = []
 
-words = [
-    "ADRESS", "AGATEN", "AGATER", 
-    "ALLVAR", "AMATÖR", "AVIGAN", 
-    "BESLAG", "GARAGE", "GASRÖR", 
-    "GRANNE", "KURERA", "LIVLIG", 
-    "NARRAS", "NARRAT", "RASSLA", 
-    "RATTAR", "REGENT", "REMMAR", 
-    "ROTERA", "SNARAR", "STEGRA", 
-    "TORGET", "TOTALA", "TROLLA"
-]
+    
+
+
            
 def orderfun(hive,start):
     #function for making the selection order start from the center out
@@ -57,7 +50,7 @@ def insert(hive,index):
     for word in hive.avalable: # each hive has their own avalable stack
         
         outcomes = hive.all[index].insertWord(word) # outcomes check if the word also can be inserted backwards
-        first = True
+        
         
         if outcomes != []:
             outcomes = remove_duplicates(outcomes)
@@ -66,12 +59,14 @@ def insert(hive,index):
                 hive_copy.all[index].sides = outcome
                 
                 hive_copy.updatehexes() # updates all neighbours
-                if first:
-                    hive_copy.complete_amt += 1
-                    hive_copy.avalable.remove(word)
-                    first = False
                 
+                hive_copy.complete_amt += 1
+                hive_copy.avalable.remove(word)
+                    
+                #if index == 14:    
+                    #print(hive_copy)
                 permutations.append(hive_copy)
+                
     
     nl = []
     
@@ -99,7 +94,7 @@ def run(hives,index):
     
 
 
-def main():
+def main(words, x, start): # x = starting index, start is starting word
     global order
     
     hexes = []
@@ -108,9 +103,9 @@ def main():
     for i in range(1,26):
         hexes.append(hexClass(i," "," "," "," "," "," ","",False))
         
-    # starting hex  
-    index = 14
-    hexes[index-1] = hexClass(index,"R","E","N","E","G","A","GENERA",True)
+    # starting hex   
+    
+    hexes[x-1] = start
     
     
     # importaint
@@ -118,7 +113,7 @@ def main():
     
     hive.updatehexes()
     
-    order = orderfun(hive,index)
+    order = orderfun(hive,x)
     
       
     
@@ -128,8 +123,9 @@ def main():
     
     print(tree[0][0])
     
-    
+    x = 0
     for index in order:  
+        x += 1
         print("Inserting at", index+1,"\n")
         permutations = []
         
@@ -138,16 +134,17 @@ def main():
         i += 1
         
         tree[i] = flatten(permutations)
-        
+            
         print(tree[i][0])
+        
         print("Total permutations:",len(tree[i]),"\n")
         
-        #print(tree[i][0].avalable)
+        print(tree[i][0].avalable)
         
         print("Complete amount: ", tree[i][0].complete_amt, "\n")
         
-    
-    
-    
-    
-main()
+        if i == 24:
+            for item in tree[24]:
+                print(item)
+        
+        

@@ -13,8 +13,7 @@ words = [
 
 
 x = 14
-
-start = hexClass(x,"R","E","N","E","G","A","GENERA",True)
+start = hexClass(index,"R","E","N","E","G","A","GENERA",True)
 
    U     A     B     R
 K     R     G     E     D
@@ -41,30 +40,6 @@ G     I     A     A     A
    L     G     R     M
 
 
-   A     A     B     R
-K     R     G     E     D
-   1     2     3     4
-U     E     A     S     A
-   R     T     L     S
-      5     6     7
-   A     O     A     A
-S     R     T     R     M
-   8     9     10    11
-T     G     T     R     M
-   E     E     A     E
-      12    13    14
-   R     N     G     N
-O     T     A     E     N
-   15    16    17    18
-L     A     R     G     A
-   L     R     A     R
-      19    20    21
-   L     A     S     Ö
-I     V     N     R     T
-   22    23    24    25
-G     I     A     A     A
-   L     G     R     M
-
 ##
 
 
@@ -81,8 +56,8 @@ words = [
 
 x = 13
 
-start = hexClass(x,"P","P","A","L","K","A","KLAPPA",True)
-
+start = hexClass(index,"P","P","A","L","K","A","KLAPPA",True)
+    
    S     A     A     Ö
 T     K     T     T     S
    1     2     3     4
@@ -108,7 +83,6 @@ T     A     K     A     I
    R     N     I     S
 
 ##    
-    
 
 
 words = [
@@ -121,10 +95,10 @@ words = [
     "SONETT", "SOVRUM", "TANDAT", 
     "TESORT", "TONART", "TRASOR"
 ]
-    
+
 x = 17
 
-start = hexClass(x,"O","N","A","V","O","R","OVANOR",True)
+start = hexClass(index,"O","N","A","V","O","R","OVANOR",True)
 
    S     L     M     R        
 D     E     E     E     A     
@@ -151,6 +125,100 @@ L     V     K     R     N
    Å     S     S     D        
 
 
+   S     L     M     R        
+D     E     E     E     A     
+   1     2     3     4        
+A     E     D     N     S     
+   D     N     A     A        
+      5     6     7
+   A     A     S     N        
+S     R     R     A     D     
+   8     9     10    11       
+G     O     E     T     A     
+   N     T     S     T        
+      12    13    14
+   A     T     O     E        
+V     R     R     N     R     
+   15    16    17    18       
+S     A     O     A     A     
+   N     S     V     S        
+      19    20    21
+   L     M     R     L        
+B     A     U     A     I     
+   22    23    24    25       
+L     V     K     R     N     
+   Å     S     S     D     
+    
+##
+
+
+words = [
+    "ALTARE", "ANGLAT", "ATEIST", 
+    "ELVISP", "EMOTTA", "FATALA", 
+    "GIRERA", "GRATTA", "KNATTE", 
+    "OMSATT", "PALATS", "PETATS", 
+    "RAGLAT", "REDERI", "SLAFAT",
+    "REMSOR", "RENADE", "RIKTIG", 
+    "SPIRAL", "TAFATT", "TEVAGN", 
+    "TOTALA", "TUNIKA", "TUNNEL"
+]
+
+x = 20
+
+start = hexClass(index,"T","A","R","E","L","A","LATARE",True)
+    
+   E     E     R     V
+L     P     T     A     E
+   1     2     3     4
+V     S     A     G     T
+   I     T     L     N
+      5     6     7
+   E     A     A     A
+K     T     F     T     L
+   8     9     10    11
+N     T     A     S     A
+   A     T     L     P
+      12    13    14
+   S     O     A     I
+O     M     T     R     K
+   15    16    17    18
+R     E     T     G     T
+   R     A     A     I
+      19    20    21
+   A     L     R     R
+K     T     E     E     I
+   22    23    24    25
+I     U     N     D     R
+   N     N     A     E
+
+
+
+
+   V     E     R     V
+L     I     T     A     E
+   1     2     3     4
+E     S     A     G     T
+   P     T     L     N
+      5     6     7
+   E     A     A     A
+K     T     F     T     L
+   8     9     10    11
+N     T     A     S     A
+   A     T     L     P
+      12    13    14
+   S     O     A     I
+O     M     T     R     K
+   15    16    17    18
+R     E     T     G     T
+   R     A     A     I
+      19    20    21
+   A     L     R     R
+K     T     E     E     I
+   22    23    24    25
+I     U     N     D     R
+   N     N     A     E
+
+
 
 ##
 
@@ -168,7 +236,7 @@ words = [
 
 x = 12
 
-start = hexClass(x,"I","K","R","O","T","S","KISTOR",True)
+start = hexClass(index,"I","K","R","O","T","S","KISTOR",True)
 
 
    T     H     D     S
@@ -212,7 +280,8 @@ words = [
 
 x = 21
 
-start = hexClass(x,"R","E","V","E","L","E","ELEVER",True)
+
+start = hexClass(index,"R","E","V","E","L","E","ELEVER",True)
 
 
    A     S     P     R        
@@ -258,7 +327,7 @@ words = [
 
 x = 22
 
-start = hexClass(x,"E","R","F","A","R","A","ERFARA",True)
+start = hexClass(index,"E","R","F","A","R","A","ERFARA",True)
     
 
 
@@ -307,7 +376,8 @@ words = [
     
 x = 6
 
-start = hexClass(x,"P","A","R","E","N","A","PANERA",True)
+
+start = hexClass(index,"P","A","R","E","N","A","PANERA",True)
     
 
 
