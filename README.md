@@ -39,7 +39,9 @@ the program continues finding that at one point there are 84 different permutati
 
 The termcolour package is used to make the numbers red in the console, and is optional. 
 
-To run the code with the included example, just run ´main.py´ and it will output one hive per hex inserted. 
+To run the code with the included example, just run ´run.py´ and it will output one hive per hex inserted. 
+
+To test other problems, just copy selected content from ´Examples´ and run.
 
 
 
