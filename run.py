@@ -19,4 +19,4 @@ start = hexClass(x,"E","R","F","A","R","A","ERFARA",True)
 
 # Don't touch
 main(words, x, start)
-    
+
